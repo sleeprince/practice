@@ -1,26 +1,23 @@
 
 public class Test {
+	
+	public static void main(String[] args) throws Exception {
 
-	public static void main(String[] args) {
+		char[][] arr = new char[9][17];
 		
-		int num = 1;
-		double num2 = 3/2f;
-		//System.out.println(num2 + "");
-		
-		int no = 10;
-		no = no + 2;
-		System.out.println(no + "");
-		no += 2;
-		System.out.println(no + "");
-		no -= 2;
-		System.out.println(no + "");
-		no *= 2;
-		System.out.println(no + "");
-		no /= 2;
-		System.out.println(no + "");
-		no %= 2;
-		System.out.println(no + "");
-		
+		for(int i = 0; i < arr.length ; i++) {	
+			
+			for(int j = 0; j < arr[i].length ; j++) {
+				if(j%2==1) {
+					arr[i][j] = 32;					
+				}else if(j == 2*i) {
+					arr[i][j] = '8';
+				}else {
+					arr[i][j] = '0';
+				}				
+				System.out.print(arr[i][j]);
+			}
+			System.out.println();
+		}
 	}
-
 }
