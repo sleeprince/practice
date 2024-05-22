@@ -45,8 +45,6 @@ public class Study09 {
 	    	}
 	    	System.out.println("");
     	}
-	
-	
 	    /*** 코드 종료 ***/
 
   }
