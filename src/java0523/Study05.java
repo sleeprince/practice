@@ -52,10 +52,11 @@ public class Study05 {
 		String mult = "*";
 		String div = "/";
 		
+		
 		System.out.println("첫 번째 숫자를 입력하세요.");
 		int a = sc.nextInt();
 		System.out.println("연산자를 입력하세요.");
-		String b = sc.next();
+		String b = sc.nextLine();
 		System.out.println("두 번째 숫자를 입력하세요.");
 		int c = sc.nextInt();
 		
