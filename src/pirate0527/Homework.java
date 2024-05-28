@@ -1,4 +1,4 @@
-package pirate;
+package pirate0527;
 
 public class Homework {
 

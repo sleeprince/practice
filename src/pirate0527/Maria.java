@@ -1,4 +1,4 @@
-package pirate;
+package pirate0527;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,6 +16,7 @@ public class Maria {
 	String address = "jdbc:mariadb://localhost:3306/study";
 	String user = "root";
 	String password = "1q2w3e4r";
+	int row = 0;
 	
 	public void access() {
 		
@@ -28,7 +29,7 @@ public class Maria {
 					+ "no int, "
 					+ "name varchar(50), "
 					+ "sex varchar(10), "
-					+ "charactericstic varchar(50), "
+					+ "feature varchar(50), "
 					+ "party varchar(50), "
 					+ "role varchar(50)"
 					+ ")";
@@ -50,11 +51,11 @@ public class Maria {
 				};
 							
 			String sql2 = "";
-			for(int i = 0; i < crew.length; i++) {
-				sql2 = "insert into onepiece value (" + (i + 1) + ", ";
-				for(int j = 0; j < crew[i].length; j++) {
-					sql2 += "\'" + crew[i][j] + "\'";
-					if(j != crew[i].length - 1) {
+			for(; row < crew.length; row++) {
+				sql2 = "insert into onepiece value (" + (row + 1) + ", ";
+				for(int j = 0; j < crew[row].length; j++) {
+					sql2 += "'" + crew[row][j] + "'";
+					if(j != crew[row].length - 1) {
 						sql2 += ", ";
 					}else {
 						sql2 += ")";
@@ -64,8 +65,28 @@ public class Maria {
 				ps.executeUpdate();
 			}
 			
-			String sql3 = "select * from onepiece";
+			String[] buggy = new String[] {"버기", "남자", "동강동강 열매", "버기", "선장"};
+			sql2 = "insert into onepiece value (" + (row + 1) + ", ";
+			for(int i = 0; i < buggy.length; i++) {
+				sql2 += "\'" + buggy[i] + "\'";
+				if(i != buggy.length - 1) {
+					sql2 += ", ";
+				}else {
+					sql2 += ")";
+				}
+			}
+			ps = conn.prepareStatement(sql2);
+			ps.executeUpdate();
+			
+			
+			String sql3 = "update onepiece set role = '광대' where no = 10";
 			ps = conn.prepareStatement(sql3);
+			ps.executeUpdate();
+			
+			
+			
+			String sql5 = "select * from onepiece";
+			ps = conn.prepareStatement(sql5);
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
