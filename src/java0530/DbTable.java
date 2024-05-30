@@ -1,4 +1,4 @@
-package test;
+package java0530;
 
 public class DbTable {
 
