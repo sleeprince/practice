@@ -31,7 +31,7 @@ public class DbController {
 		this.driver = _driver;
 		this.address = _address;
 		this.user = _user;
-		this.password = _password;	
+		this.password = _password;
 		initiate();
 	}
 	
@@ -40,8 +40,9 @@ public class DbController {
 		try {
 			Class.forName(driver);
 			Connection conn = DriverManager.getConnection(address, user, password);
-			controlFuc(conn);
 			
+			controlFuc(conn);
+		
 			conn.close();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -59,8 +60,7 @@ public class DbController {
 			//DML >> CRUD;
 //			sql = createData();
 //			cud(sql, conn);
-			List list = new ArrayList<DataDto>();
-			list = createData();			
+			List<DataDto> list = createData();	
 						
 			for(int i = 0; i < list.size(); i++) {
 				cud(input, conn, (DataDto)list.get(i), "I");
@@ -69,8 +69,7 @@ public class DbController {
 			// 읽기
 			readData("select * from 명단", conn);
 			
-			//수정
-			
+			//수정			
 			DataDto data = new DataDto();
 			data.setFeature("사황");
 			data.setRole("광대");
@@ -89,9 +88,9 @@ public class DbController {
 		}
 		
 	}
-	
-	private List createData() {
-		List list = new ArrayList<DataDto>();
+
+	private List<DataDto> createData() {
+		List<DataDto> list = new ArrayList<DataDto>();
 		String[][] crew = new String[][]
 				{ 
 				{"몽키 D. 루피", "남자", "고무고무 열매", "밀짚모자", "선장"},
@@ -199,9 +198,7 @@ public class DbController {
 					ps.setInt(1, data.getNo());
 					break;
 //				default:
-			}
-			
-			
+			}			
 			int result = ps.executeUpdate();
 			System.out.println(result);
 			ps.close();			
