@@ -70,9 +70,9 @@ public class AppController {
 		System.out.println("생일을 입력하십시오.");
 		data.setBirthday(scan.nextLine());
 		System.out.println("MBTI를 입력하십시오.");
-		data.setMbti(scan.nextLine());
+		data.setMbti(scan.nextLine().toUpperCase());
 		System.out.println("혈액형을 입력하십시오.");
-		data.setBloodType(scan.nextLine());
+		data.setBloodType(scan.nextLine().toUpperCase());
 		System.out.println(data);
 		// 코드추가를 확인 후 아래의 주석을 풀고 실행하세요.
 		db.데이터입력하기(conn, sql, data);
@@ -176,7 +176,7 @@ public class AppController {
 		String blood = list.get(0).getBloodType();
 		
 		sql = "select * from 명단 where (delYn = 0) AND (이름 <> '" + receiver + "')";
-		switch(blood) {
+		switch(blood.toUpperCase()) {
 			case "AB":
 				break;
 			case "A":
@@ -244,12 +244,12 @@ public class AppController {
 				case "M":
 				case "m":
 					System.out.println("어떻게 바꾸시겠습니까?");
-					data.setMbti(scan.nextLine());
+					data.setMbti(scan.nextLine().toUpperCase());
 					break;
 				case "T":
 				case "t":
 					System.out.println("어떻게 바꾸시겠습니까?");
-					switch(str = scan.nextLine()) {					
+					switch(str = scan.nextLine().toUpperCase()) {					
 						case "A":
 						case "B":
 						case "O":
